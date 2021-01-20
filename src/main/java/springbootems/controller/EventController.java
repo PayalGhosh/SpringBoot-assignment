@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import springbootems.db.EventRepository;
 import springbootems.model.Event;
+import springbootems.service.EventService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -14,16 +15,16 @@ import springbootems.model.Event;
 public class EventController {
 	
 		@Autowired
-		private EventRepository eventRepository;
+		private EventService eventService;
 		
 		@GetMapping("/get")
-		public List<Event> getUsers() {
-			return eventRepository.findAll();
+		public List<Event> getAllEvents() {
+			return eventService.getAllEvents();
 		}
 
 		@PostMapping("/add")
 			public void addEvent(@RequestBody Event event){
-			eventRepository.save(event);
+			eventService.addEvent(event);
 			}
 		}
 

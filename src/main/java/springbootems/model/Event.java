@@ -18,27 +18,25 @@ import javax.persistence.TemporalType;
 public class Event {
 
 	    @Id
-	    @Column(name = "id")
+	    @Column(name = "eventId")
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-        @Temporal(value=TemporalType.DATE)
-        @Column(name="end_date")
-        @JsonFormat(pattern="yyyy-MM-dd")
-        private Date end_date;
-
-	    @Column(name = "event_name")
+	    @Column(name = "eventName")
 	    private String name;
 
-        @Column(name = "event_revenue")
-        private Long revenue;
+        @Temporal(value=TemporalType.DATE)
+        @Column(name="startDate")
+        @JsonFormat(pattern="yyyy-MM-dd")
+        private Date startDate;
 
         @Temporal(value=TemporalType.DATE)
-        @Column(name="start_date")
+        @Column(name="endDate")
         @JsonFormat(pattern="yyyy-MM-dd")
-        private Date st_date;
+        private Date endDate;
 
-	    
+        @Column(name = "eventRevenue")
+        private Long revenue;
 
 	public Event() {
 		// TODO Auto-generated constructor stub
@@ -69,7 +67,5 @@ public class Event {
     public Long getRevenue() {
         return revenue;
     }
-
-
 
 }
